@@ -3,9 +3,9 @@ pipeline{
         label 'orange-pi'
     }
 
-    environment{
-        IMAGE_NAME = "${IMAGE_NAME}"
-    }
+    // environment{
+    //     IMAGE_NAME = "${IMAGE_NAME}"
+    // }
 
     stages {
         stage('clean'){
