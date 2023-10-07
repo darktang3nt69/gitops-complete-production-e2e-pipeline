@@ -35,6 +35,10 @@ pipeline{
         }
         stage('Push the changes to scm'){
             steps{
+                sh """
+                git add deployment
+                git commit -m "Jenkins CD: updated image"
+                """
                 withCredentials([gitUsernamePassword(credentialsId: 'github-creds')]) {
                     sh "git push -u origin HEAD:master"
             }
