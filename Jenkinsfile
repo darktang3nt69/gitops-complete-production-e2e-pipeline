@@ -36,7 +36,7 @@ pipeline{
         stage('Push the changes to scm'){
             steps{
                 withCredentials([gitUsernamePassword(credentialsId: 'github-creds')]) {
-                    sh "git push"
+                    sh "git push -u origin master"
             }
         }
     }
