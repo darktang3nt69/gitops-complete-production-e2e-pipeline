@@ -27,7 +27,7 @@ pipeline{
                 sh """
                 echo "Before Deployment:"
                 cat deployment.yaml
-                sed -i 's|image: .*|image: ${IMAGE_TAG}|' deployment.yaml
+                sed -i 's|image:|IMAGE_NAME:|' deployment.yaml
                 echo "After Deployment:"
                 cat deployment.yaml
                 """
