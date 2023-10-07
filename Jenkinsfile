@@ -25,7 +25,7 @@ pipeline{
         stage('Update deployment file'){
             steps{
                 sh """
-                echo "Before Deployment:
+                echo "Before Deployment:"
                 cat deployment.yaml
                 sed -i 's|image: .*|image: ${IMAGE_TAG}|' deployment.yaml
                 """
