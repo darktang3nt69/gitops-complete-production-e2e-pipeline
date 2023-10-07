@@ -28,13 +28,15 @@ pipeline{
                 echo "Before Deployment:"
                 cat deployment.yaml
                 sed -i 's|image: .*|image: ${IMAGE_TAG}|' deployment.yaml
+                echo "After Deployment:"
+                cat deployment.yaml
                 """
             }
         }
         stage('Push the changes to scm'){
             steps{
                 withCredentials([gitUsernamePassword(credentialsId: 'github-creds')]) {
-                    sh "git push -u origin main"
+                    sh "git push"
             }
         }
     }
