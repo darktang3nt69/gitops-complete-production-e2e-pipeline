@@ -27,9 +27,8 @@ pipeline{
                 sh """
                 echo "Before Deployment:
                 cat deployment.yaml
-                sed -i "s|image: .*|image: ${IMAGE_NAME}|" deployment.yaml
+                sed -i 's|image: .*|image: ${IMAGE_NAME}|' deployment.yaml
                 """
-
             }
         }
         stage('Push the changes to scm'){
