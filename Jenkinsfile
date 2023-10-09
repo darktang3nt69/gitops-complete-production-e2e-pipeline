@@ -3,9 +3,9 @@ pipeline{
         label 'orange-pi'
     }
 
-    // environment{
-    //     IMAGE_NAME = "${IMAGE_NAME}"
-    // }
+    environment{
+        APP_NAME = "complete-production-e2e-pipeline-project"
+    }
 
     stages {
         stage('clean'){
@@ -27,7 +27,7 @@ pipeline{
                 sh """
                 echo "Before Deployment:"
                 cat deployment.yaml
-                sed -i "s|image: .*|image: ${IMAGE_TAG}|" deployment.yaml
+                sed -i "s/${APP_NAME}.*/${APP_NAME}:${IMAGE_TAG}/g" deployment.yaml
                 echo "After Deployment:"
                 cat deployment.yaml
                 """
